@@ -18,10 +18,10 @@ const Navbar = () => {
           />
         </div>
         <div className="flex items-center">
-          <form className="flex items-center bg-white rounded-full">
+          <form className="flex items-center bg-white shadow-md rounded-full pr-1">
             <input
               type="search"
-              className="rounded-full bg-white px-4 py-2 w-96"
+              className="rounded-full bg-white focus:outline-none px-4 py-2 w-96"
               placeholder="Search for products and stores."
             />
             <button type="submit" className=" text-primary rounded-full p-2">
