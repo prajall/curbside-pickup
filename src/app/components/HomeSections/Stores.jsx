@@ -1,0 +1,139 @@
+import Image from "next/image";
+
+const StoreCard = ({ name, logo, address, distance }) => {
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 p-4 flex flex-col ">
+      <div className="flex items-center mb-4">
+        <Image
+          src={logo || "/placeholder.svg"}
+          alt={name}
+          width="100"
+          height="100"
+          className=" object-contain mr-4 border-none outline-none"
+        />
+        <div>
+          <h3 className="text-lg font-medium text-gray-800">{name}</h3>
+        </div>
+      </div>
+
+      <div className="w-full mt-2">
+        <div className="flex items-start mb-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-red-500 mt-0.5 flex-shrink-0"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+              clipRule="evenodd"
+            />
+          </svg>
+          <div className="ml-2">
+            {address && <p className="text-sm text-gray-600">{address}</p>}
+          </div>
+        </div>
+
+        {distance && (
+          <div className="flex items-center mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-green-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <span className="ml-2 text-sm text-gray-600">{distance}</span>
+          </div>
+        )}
+      </div>
+
+      <button className="mt-auto w-fit px-4 py-1 rounded-full mx-auto cursor-pointer hover:bg-primary duration-300 bg-secondary text-white font-medium ">
+        Select Store
+      </button>
+    </div>
+  );
+};
+
+const Stores = () => {
+  const stores = [
+    {
+      name: "Whole Foods Market",
+      logo: "/wholeFoods.png",
+      address: "4315 Arden Way, Sacramento CA 95864",
+      distance: "5 miles",
+    },
+    {
+      name: "Nugget Markets",
+      logo: "/nuggetMarkets.png",
+      address: "1040 Florin Rd, Sacramento CA 95831",
+      distance: "8 miles",
+    },
+    {
+      name: "Trader Joe's",
+      logo: "/Traderjoe.png",
+      address: "2625 Marconi Ave, Sacramento CA 95821",
+      distance: "6 miles",
+    },
+    {
+      name: "Safeway",
+      logo: "/safeway.png",
+      address: "2851 Del Paso Rd, Sacramento CA 95834",
+      distance: "7 miles",
+    },
+  ];
+
+  return (
+    <section className="py-10 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10">
+          <h2 className="text-6xl font-semibold text-primary mb-4">
+            Choose Your Preferred Store
+          </h2>
+          <p className="text-primary max-w-2xl mx-auto">
+            Select a nearby grocery store to start shopping. Browse their
+            products, place your order, and schedule a convenient pickup time.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-screen-lg mx-auto">
+          {stores.map((store, index) => (
+            <StoreCard key={index} {...store} />
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <button className="text-teal-600 font-medium">Show all</button>
+        </div>
+
+        <div className="mt-12 bg-sky-50 rounded-lg p-6 flex items-center justify-between">
+          <img
+            src="/placeholder.svg?height=120&width=120"
+            alt="Shopping illustration"
+            className="w-24 h-24"
+          />
+          <div className="flex-1 mx-4">
+            <p className="text-primary text-center">
+              Shop online, choose your pickup time and let us handle the rest
+              saving you time and effort while ensuring fresh, quality products
+              every time.
+            </p>
+          </div>
+          <img
+            src="/placeholder.svg?height=100&width=100"
+            alt="QR Code"
+            className="w-20 h-20"
+          />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Stores;
