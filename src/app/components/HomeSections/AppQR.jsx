@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AppQR = () => {
   return (
-    <div className="container max-w-5xl mx-auto relative flex items-center bg-[#E6F4F1] rounded-lg py-4 my-10 shadow-md w-full ">
+    <div className="container max-w-5xl mx-auto relative flex items-center bg-[#E6F4F1] rounded-lg py-4 px-4 my-10 shadow-md w-full ">
       {/* Left Image */}
       <div className="absolute bottom-0 left-4">
         <Image
