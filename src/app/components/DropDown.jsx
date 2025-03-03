@@ -1,55 +1,48 @@
 "use client";
+
+import { ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function DropdownMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef < HTMLDivElement > null;
+  const dropdownRef = useRef(null);
 
-  // Close dropdown if clicked outside
+  // Close dropdown when clicking outside
   useEffect(() => {
-    function handleClickOutside(event) {
+    const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
     };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div className="relative" ref={dropdownRef}>
-      {/* Dropdown Button */}
+      {/* Dropdown Toggle Button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
-        className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+        className=" flex gap-1 px-4 py-1 text-primary cursor-pointer"
       >
-        Menu
+        Login <ChevronDown />
       </button>
 
-      {/* Dropdown Content */}
+      {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute mt-2 w-40 bg-white border rounded-lg shadow-lg">
-          <ul className="py-2">
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 text-blue-600 hover:bg-gray-100"
-              >
-                Signup
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block px-4 py-2 text-blue-600 hover:bg-gray-100"
-              >
-                Login
-              </a>
-            </li>
-          </ul>
+        <div className="absolute right-0 w-40 bg-white shadow-lg rounded-md border border-gray-200 p-1">
+          <a
+            href="/login"
+            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+          >
+            Login
+          </a>
+          <a
+            href="/signup"
+            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition"
+          >
+            Signup
+          </a>
         </div>
       )}
     </div>

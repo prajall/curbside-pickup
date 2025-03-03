@@ -2,6 +2,7 @@ import { Search } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import DropdownMenu from "./DropDown";
+import Link from "next/link";
 // import Logo from "../images/image5.png";
 
 const Navbar = () => {
@@ -9,13 +10,15 @@ const Navbar = () => {
     <nav className="fixed z-50 top-0 left-0 w-full bg-[#EDFCFA]">
       <div className="container mx-auto px-4 py-4 flex justify-between">
         <div className="flex items-center">
-          <Image
-            className="h-10"
-            width="50"
-            height="134"
-            src="/image5.png"
-            alt="Company Logo"
-          />
+          <Link href="/">
+            <Image
+              className="h-10"
+              width="50"
+              height="134"
+              src="/image5.png"
+              alt="Company Logo"
+            />
+          </Link>
         </div>
         <div className="flex items-center">
           <form className="flex items-center bg-white shadow-md rounded-full pr-1">
@@ -30,7 +33,7 @@ const Navbar = () => {
           </form>
         </div>
         <div className="flex items-center">
-          {/* <DropdownMenu /> */}
+          <DropdownMenu />
 
           <div className="ml-4">
             <svg

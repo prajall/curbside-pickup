@@ -5,6 +5,7 @@ import { X, Phone } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { FiPhone } from "react-icons/fi";
+import { redirect } from "next/navigation";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -62,7 +63,12 @@ export default function SignUp() {
           </p>
 
           {/* Continue button */}
-          <button className="w-full py-3 bg-sky-400 text-white rounded-lg hover:bg-sky-500 transition-colors">
+          <button
+            onClick={() => {
+              redirect("/dashboard");
+            }}
+            className="w-full py-3 bg-secondary cursor-pointer text-white rounded-lg hover:bg-primary transition-colors"
+          >
             Continue
           </button>
         </div>
