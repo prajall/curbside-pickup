@@ -6,7 +6,7 @@ import DropdownMenu from "./DropDown";
 
 const Navbar = () => {
   return (
-    <nav className=" bg-[#EDFCFA]">
+    <nav className="fixed z-50 top-0 left-0 w-full bg-[#EDFCFA]">
       <div className="container mx-auto px-4 py-4 flex justify-between">
         <div className="flex items-center">
           <Image

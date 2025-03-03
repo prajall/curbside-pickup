@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
-  { id: 1, image: "/images/slide1.jpg" },
-  { id: 2, image: "/images/slide2.jpg" },
-  { id: 3, image: "/images/slide3.jpg" },
+  { id: 1, image: "/slider-image.png" },
+  { id: 2, image: "/slider-image.png" },
+  { id: 3, image: "/slider-image.png" },
 ];
 
 export default function ImageSlider() {
@@ -19,7 +19,7 @@ export default function ImageSlider() {
     if (isAutoPlaying) {
       interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
-      }, 5000); // Change slide every 5 seconds
+      }, 5000);
     }
 
     return () => clearInterval(interval);
@@ -37,31 +37,34 @@ export default function ImageSlider() {
   };
 
   return (
-    <div
-      className="relative w-full overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {/* Slides container */}
+    <div className="relative w-full max-w-[800px] mx-auto">
+      {/* Slides Wrapper */}
       <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        className="relative overflow-hidden w-full"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
-        {slides.map((slide) => (
-          <div key={slide.id} className="min-w-full">
-            <img
-              src={slide.image || "/placeholder.svg"}
-              alt={`Slide ${slide.id}`}
-              className="w-full h-auto object-cover"
-            />
-          </div>
-        ))}
+        {/* Slides container */}
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
+          {slides.map((slide) => (
+            <div key={slide.id} className="min-w-full">
+              <img
+                src={slide.image || "/placeholder.svg"}
+                alt={`Slide ${slide.id}`}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Navigation buttons */}
+      {/* Navigation buttons (Placed Outside the Overflow-Hidden Wrapper) */}
       <button
         onClick={goToPrevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition-colors"
+        className="absolute -left-2 top-1/2 -translate-y-1/2 -translate-x-full flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition"
         aria-label="Previous slide"
       >
         <ChevronLeft className="h-6 w-6 text-gray-700" />
@@ -69,7 +72,7 @@ export default function ImageSlider() {
 
       <button
         onClick={goToNextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition-colors"
+        className="absolute -right-2 top-1/2 -translate-y-1/2 translate-x-full flex h-10 w-10 items-center justify-center rounded-full bg-white/80 shadow-md hover:bg-white transition"
         aria-label="Next slide"
       >
         <ChevronRight className="h-6 w-6 text-gray-700" />

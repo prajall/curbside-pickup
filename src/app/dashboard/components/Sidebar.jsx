@@ -84,7 +84,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="no-scrollbar flex flex-col overflow-y-auto h-full justify-between">
+      <div className="no-scrollbar flex flex-col overflow-y-auto h-full justify-between text-primary">
         <div>
           <ul className="mb-6 flex flex-col gap-1.5">
             {menuItems.map((item) => (
